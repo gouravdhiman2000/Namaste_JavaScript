@@ -1,7 +1,7 @@
 {
   "name": "14_nodejs",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "dev" : "nodemon index.js"
   },
