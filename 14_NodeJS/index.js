@@ -1,19 +1,17 @@
-const http = require("http");
-const server = http.createServer((req,res)=>{
-    if(req.url === '/' && req.method === 'GET'){
-        res.writeHead(200, {"Content-Type" : "text/plain"});
-        res.end("Welcome to the Job Tracker API")
-    }
-    else if(req.url === '/health' && req.method === 'GET'){
-        res.writeHead(200, {"Content-Type" : "application/json"});
-        res.end(JSON.stringify({status : "ok"}));
-    }
-    else{
-        res.writeHead(404, {"Content-Type" : "text/plain"});
-        res.end("Not Found");
-    }
+const express = require("express");
+const app = express()
+
+app.get("/", (req,res) =>{
+    res.send("Welcome to the Job tracker API");
 });
 
-server.listen(3000,()=>{
-    console.log("Server running on http://localhost:3000");
+app.get("/application/:id", (req,res) =>{
+    res.send(`Fetching application with id ${req.params.id}`);
 });
+
+app.get("/application", (req,res) =>{
+    const {status} = req.query;
+    res.send(`Filtering by status : ${status}`);
+});
+
+app.listen(3000, ()=>console.log("Server running on port : 3000"));
