@@ -1,7 +1,13 @@
-const p = new Promise((resolve, reject) => {
+const p1 = new Promise((resolve, reject) => {
     setTimeout(()=>{
-        resolve("Promise Resolved Value !!")
+        resolve("Promise Resolved Value of P1 !!")
     }, 5000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+    setTimeout(()=>{
+        resolve("Promise Resolved Value of P2!!")
+    }, 10000);
 });
 
 //handling promise normally
@@ -15,9 +21,13 @@ const p = new Promise((resolve, reject) => {
 
 //handling Promise using async and await
 async function handlePromise(){
-    const val = await p;
-    console.log("JavaScript"); //Js Engine was waiting for promise to get resolved
-    console.log(val);
+    const val1 = await p1;
+    console.log("JavaScript - 1"); //Js Engine was waiting for promise to get resolved
+    console.log(val1);
+
+    const val2 = await p2;
+    console.log("JavaScript - 2"); //Js Engine was waiting for promise to get resolved
+    console.log(val2);
 }
 handlePromise();
 
